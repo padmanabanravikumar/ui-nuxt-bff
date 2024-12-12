@@ -15,8 +15,9 @@ const apiProxy = createProxyMiddleware({
 
 export default defineEventHandler(async (event) => {
   await new Promise((resolve, reject) => {
-    const next = (err?: unknown) => {
+    const next = (err?: Error) => {
       if (err) {
+        console.error('Proxy error:', err.message);
         reject(err)
       } else {
         resolve(true)
