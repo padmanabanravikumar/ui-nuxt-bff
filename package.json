@@ -10,7 +10,6 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "http-proxy-middleware": "^3.0.3",
     "nuxt": "^3.14.1592",
     "vue": "latest",
     "vue-router": "latest"
