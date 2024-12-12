@@ -1,6 +1,6 @@
 <script setup>
-const { data } = await useFetch('/api/orders/orders')
-const { data: users } = await useFetch('/api/admin/users')
+const { data } = await useFetch('/api/orders/orders', { server: false })
+const { data: users } = await useFetch('/api/admin/users', { server: false })
 </script>
 
 <template>
