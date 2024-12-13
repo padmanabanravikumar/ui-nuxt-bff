@@ -10,11 +10,13 @@ export default defineEventHandler(async (event) => {
     setResponseStatus(event, 401);
   }
 
+  const payload: Object = data?.payload;
+
   return {
     isSuccess: true,
     traceId: '1f6e22c5-9b1a-4e3b-a9f8-64d203bbd2a3',
     statusCode: !data ? 401 : 200,
-    data: data?.payload,
+    data: payload,
     message: !data ? 'Unauthorized' : 'User Info Success'
   }
 });

@@ -6,5 +6,11 @@ export default defineNuxtConfig({
     adminProxyUrl: 'https://675ab411099e3090dbe5aa5c.mockapi.io',
     orderProxyUrl: 'https://675ab411099e3090dbe5aa5c.mockapi.io',
     sessionPassword: 'ca445024-6470-4df0-bfdb-cb583d3e9022'
+  },
+  modules: [
+    '@pinia/nuxt'
+  ],
+  pinia: {
+    storesDirs: ['./stores/**']
   }
 })
