@@ -2,6 +2,7 @@
 const loginData = ref();
 const ordersData = ref();
 const usersData = ref();
+const authInfo = ref();
 
 const fetchOrders = async () => {
   const { data } = await useFetch('/api/orders/orders');
@@ -28,14 +29,21 @@ const handleLogout = async () => {
   loginData.value = data;
 }
 
+const fetchAuthUser = async () => {
+  const { data } = await useFetch('/api/account/user-info');
+  authInfo.value = data;
+};
+
 await fetchOrders();
 await fetchUsers();
+await fetchAuthUser();
 </script>
 
 <template>
   <div>
     <button @click="handleLogin">Login</button>
     <button @click="handleRefresh">Refresh</button>
+    <button @click="fetchAuthUser">Fetch Auth User</button>
     <button @click="handleLogout">Logout</button>
     <br>
     <button @click="fetchOrders">Load Orders</button>
@@ -45,6 +53,7 @@ await fetchUsers();
         <thead>
           <tr>
             <th>Auth</th>
+            <th>Auth User</th>
             <th>Users</th>
             <th>Orders</th>
           </tr>
@@ -54,6 +63,11 @@ await fetchUsers();
             <td>
               <div>
                 <pre>{{ loginData }}</pre>
+              </div>
+            </td>
+            <td>
+              <div>
+                <pre>{{ authInfo }}</pre>
               </div>
             </td>
             <td>
