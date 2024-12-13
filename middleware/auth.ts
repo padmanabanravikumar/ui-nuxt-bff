@@ -1,5 +1,6 @@
 export default defineNuxtRouteMiddleware(() => {
-  const authStore = useAuthStore();
+  const pinia = usePinia();
+  const authStore = useAuthStore(pinia as any);
 
   if (!authStore.isAuthenticated) {
     return navigateTo('/login');
