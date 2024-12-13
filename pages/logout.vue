@@ -8,8 +8,10 @@ definePageMeta({
 });
 
 const authStore = useAuthStore();
+const router = useRouter();
 
 const handleLogout = async () => {
   await authStore.logout();
+  await router.replace('/');
 }
 </script>

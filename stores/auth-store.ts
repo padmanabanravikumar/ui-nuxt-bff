@@ -28,22 +28,18 @@ export const useAuthStore = defineStore('auth', {
       }
     },
     async logout() {
-      const { error } = await useFetch('/api/account/logout');
-      if (!error) {
+      const response = await $fetch('/api/account/logout');
+      if (response.isSuccess) {
         this.isAuthenticated = false;
         this.authUser = undefined;
       }
     },
     async refresh() {
-      const { error } = await useFetch('/api/account/refresh');
-      if (error) {
-        this.isAuthenticated = false;
-      } else {
-        const { data, error } = await useFetch('/api/account/user-info');
-        if (!error) {
-          this.isAuthenticated = true;
-          this.authUser = data.value?.data as any;
-        }
+      const response = await $fetch('/api/account/refresh');
+      if (response.isSuccess) {
+        const response = await $fetch('/api/account/user-info');
+        this.isAuthenticated = true;
+        this.authUser = response.data as any;
       }
     },
     async fetchUser() {

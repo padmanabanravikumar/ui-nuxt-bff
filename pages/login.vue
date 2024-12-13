@@ -9,9 +9,15 @@
 </template>
 
 <script setup>
+definePageMeta({
+  middleware: 'no-auth'
+});
+
 const authStore = useAuthStore();
+const router = useRouter();
 
 const handleLogin = async () => {
   await authStore.login();
+  await router.replace('/');
 }
 </script>

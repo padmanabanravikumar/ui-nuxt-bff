@@ -15,6 +15,9 @@
       <nav>
         <ul>
           <li>
+            <NuxtLink to="/">Home</NuxtLink>
+          </li>
+          <li>
             <NuxtLink to="/orders">Orders</NuxtLink>
           </li>
           <li>
