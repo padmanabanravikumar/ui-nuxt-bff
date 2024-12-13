@@ -1,6 +1,6 @@
 <script setup>
-const { data } = await useFetch('/api/orders/orders')
-const { data: users } = await useFetch('/api/admin/users')
+const { data } = await useFetch('/api/orders/c43de194-f838-4caf-aa14-d45a72b1546c')
+const { data: users } = await useFetch('/api/admin/c43de194-f838-4caf-aa14-d45a72b1546c', { server: false })
 </script>
 
 <template>
