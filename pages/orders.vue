@@ -6,6 +6,10 @@
 </template>
 
 <script setup>
+definePageMeta({
+  middleware: 'auth'
+});
+
 const ordersData = ref();
 const fetchOrders = async () => {
   const { data } = await useFetch('/api/orders/orders');

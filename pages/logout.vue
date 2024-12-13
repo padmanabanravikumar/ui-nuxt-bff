@@ -1,14 +1,15 @@
 <template>
   <button @click="handleLogout">Logout</button>
-  <pre>
-    {{ logoutData }}
-  </pre>
 </template>
 
 <script setup>
-const logoutData = ref();
+definePageMeta({
+  middleware: 'auth'
+});
+
+const authStore = useAuthStore();
+
 const handleLogout = async () => {
-  const { data } = await useFetch('/api/account/logout');
-  logoutData.value = data;
+  await authStore.logout();
 }
 </script>
