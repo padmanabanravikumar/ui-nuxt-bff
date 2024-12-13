@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
   // ideally we will use auth refresh endpoint to get the token result
   const result = {
     tokenType: 'Bearer',
-    accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMTIzIiwibmFtZSI6IkphbmUgRG9lIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MzQwMjE1ODgsImV4cCI6MTczNDAyNTE4OCwiaXNzIjoiZXhhbXBsZS1hcHAifQ.GYA5Vx15M1mqSPDWQNrOV7Uo5FC6t4IpCn9uPi1uDoU',
+    accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYzQ2MzZmMy0xOWM2LTQ3YzgtYWEyNC04YWRiMzA2NDhlODIiLCJuYW1lIjoiUmF2aWt1bWFyIFBhZG1hbmFiYW4iLCJlbWFpbCI6InJhdmlrdW1hci5wYWRtYW5hYmFuQGV4YW1wbGUuY29tIiwicm9sZXMiOiJBZG1pbiIsInByZWZlcnJlZF9uYW1lIjoiUmF2aSIsImlhdCI6MTczNDEwMzgyNiwiZXhwIjoxNzM0MTA3NDI2LCJpc3MiOiJ1aW51eHRiZmYuY29tIn0.z8zwwOnp_oJkmpcjDw15Ak_A4R7fVX-7rDeawWU8fyc',
     refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMTIzIiwibmFtZSI6IkphbmUgRG9lIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MzQwMjE1ODgsImV4cCI6MTczNDAyNTE4OCwiaXNzIjoiZXhhbXBsZS1hcHAifQ.GYA5Vx15M1mqSPDWQNrOV7Uo5FC6t4IpCn9uPi1uDoU',
     expiresIn: 3600
   };

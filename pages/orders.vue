@@ -1,5 +1,8 @@
 <template>
-
+  <button @click="fetchOrders">Load Orders</button>
+  <pre>
+    {{ ordersData }}
+  </pre>
 </template>
 
 <script setup>

@@ -1,31 +1,9 @@
 <script setup>
 const loginData = ref();
-const ordersData = ref();
-const usersData = ref();
 const authInfo = ref();
-
-const fetchOrders = async () => {
-  const { data } = await useFetch('/api/orders/orders');
-  ordersData.value = data;
-}
-
-const fetchUsers = async () => {
-  const { data } = await useFetch('/api/admin/users', { server: false });
-  usersData.value = data;
-};
-
-const handleLogin = async () => {
-  const { data } = await useFetch('/api/account/login');
-  loginData.value = data;
-}
 
 const handleRefresh = async () => {
   const { data } = await useFetch('/api/account/refresh');
-  loginData.value = data;
-}
-
-const handleLogout = async () => {
-  const { data } = await useFetch('/api/account/logout');
   loginData.value = data;
 }
 
@@ -34,56 +12,13 @@ const fetchAuthUser = async () => {
   authInfo.value = data;
 };
 
-await fetchOrders();
-await fetchUsers();
 await fetchAuthUser();
 </script>
 
 <template>
   <div>
-    <button @click="handleLogin">Login</button>
     <button @click="handleRefresh">Refresh</button>
     <button @click="fetchAuthUser">Fetch Auth User</button>
-    <button @click="handleLogout">Logout</button>
-    <br>
-    <button @click="fetchOrders">Load Orders</button>
-    <button @click="fetchUsers">Load Users</button>
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Auth</th>
-            <th>Auth User</th>
-            <th>Users</th>
-            <th>Orders</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div>
-                <pre>{{ loginData }}</pre>
-              </div>
-            </td>
-            <td>
-              <div>
-                <pre>{{ authInfo }}</pre>
-              </div>
-            </td>
-            <td>
-              <div>
-                <pre>{{ usersData }}</pre>
-              </div>
-            </td>
-            <td>
-              <div>
-                <pre>{{ ordersData }}</pre>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
     <NuxtRouteAnnouncer />
     <NuxtLayout>
       <LazyNuxtPage />
