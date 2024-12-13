@@ -1,28 +1,15 @@
 <script setup>
-const loginData = ref();
-const authInfo = ref();
+import { useAuthStore } from './stores/auth-store';
 
-const handleRefresh = async () => {
-  const { data } = await useFetch('/api/account/refresh');
-  loginData.value = data;
-}
-
-const fetchAuthUser = async () => {
-  const { data } = await useFetch('/api/account/user-info');
-  authInfo.value = data;
-};
-
-await fetchAuthUser();
+const authStore = useAuthStore();
+await callOnce(authStore.fetchUser);
 </script>
 
 <template>
   <div>
-    <button @click="handleRefresh">Refresh</button>
-    <button @click="fetchAuthUser">Fetch Auth User</button>
     <NuxtRouteAnnouncer />
     <NuxtLayout>
       <LazyNuxtPage />
     </NuxtLayout>
   </div>
 </template>
-

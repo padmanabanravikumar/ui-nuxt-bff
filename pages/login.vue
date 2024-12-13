@@ -1,14 +1,18 @@
 <template>
   <button @click="handleLogin">Login</button>
   <pre>
-    {{ loginData }}
+    {{ authStore.isAuthenticated }}
+  </pre>
+  <pre>
+    {{ authStore.authUser }}
   </pre>
 </template>
 
 <script setup>
-const loginData = ref();
+import { useAuthStore } from '~/stores/auth-store';
+
+const authStore = useAuthStore();
 const handleLogin = async () => {
-  const { data } = await useFetch('/api/account/login');
-  loginData.value = data;
+  await authStore.login();
 }
 </script>

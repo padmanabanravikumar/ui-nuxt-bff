@@ -14,21 +14,17 @@ interface AuthStore {
   authUser?: User
 }
 
-export const authStore = defineStore<'auth', AuthStore>('auth', {
-  state: () => ({
+export const useAuthStore = defineStore('auth', {
+  state: (): AuthStore => ({
     isAuthenticated: false
   }),
   actions: {
     async login() {
-      const { error } = await useFetch('/api/account/login');
-      if (error) {
-        this.isAuthenticated = false;
-      } else {
-        const { data, error } = await useFetch('/api/account/user-info');
-        if (!error) {
-          this.isAuthenticated = true;
-          this.authUser = data.value?.data as any;
-        }
+      const response = await $fetch('/api/account/login');
+      if (response.isSuccess) {
+        const response = await $fetch('/api/account/user-info');
+        this.isAuthenticated = true;
+        this.authUser = response.data as any;
       }
     },
     async logout() {
@@ -48,6 +44,13 @@ export const authStore = defineStore<'auth', AuthStore>('auth', {
           this.isAuthenticated = true;
           this.authUser = data.value?.data as any;
         }
+      }
+    },
+    async fetchUser() {
+      const { data } = await useFetch('/api/account/user-info');
+      if (data.value?.isSuccess) {
+        this.isAuthenticated = true;
+        this.authUser = data.value?.data as any
       }
     }
   }
