@@ -32,7 +32,6 @@ function decodeJwt(token: string) {
       signature,
     };
   } catch (err: any) {
-    console.error('Error decoding JWT:', err.message);
     return null;
   }
 }
