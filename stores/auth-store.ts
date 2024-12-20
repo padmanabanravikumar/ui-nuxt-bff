@@ -20,7 +20,13 @@ export const useAuthStore = defineStore('auth', {
   }),
   actions: {
     async login() {
-      const response = await $fetch('/api/account/login');
+      const response = await $fetch('/api/account/login', {
+        method: 'POST',
+        body: {
+          username: 'ravi@example.com',
+          password: 'Ravi@321'
+        }
+      });
       if (response.isSuccess) {
         const response = await $fetch('/api/account/user-info');
         this.isAuthenticated = true;
