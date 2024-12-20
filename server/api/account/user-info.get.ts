@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
     setResponseStatus(event, 401);
   }
 
-  const payload: Object = data?.payload;
+  const payload: Object = { ...data?.payload, roles: ['Shipper'] };
 
   return {
     isSuccess: true,

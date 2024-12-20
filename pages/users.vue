@@ -7,7 +7,8 @@
 
 <script setup>
 definePageMeta({
-  middleware: 'auth'
+  middleware: 'auth',
+  roles: ['Carrier']
 });
 
 const usersData = ref();

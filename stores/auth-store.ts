@@ -1,7 +1,7 @@
 interface User {
   preferred_name: string
   name: string
-  roles: string
+  roles: string[]
   sub: string
   iss: string
   iat: number
@@ -54,6 +54,9 @@ export const useAuthStore = defineStore('auth', {
         this.isAuthenticated = true;
         this.authUser = data.value?.data as any
       }
+    },
+    isUserInRole(role: string): boolean {
+      return this.authUser?.roles.includes(role) ?? false;
     }
   }
 });
